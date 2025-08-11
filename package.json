@@ -1,0 +1,15 @@
+{
+  "name": "realtime-spotify-api-player-state",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "dependencies": {
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1",
+    "spotify-connect-ws": "^0.1.1"
+  }
+}
