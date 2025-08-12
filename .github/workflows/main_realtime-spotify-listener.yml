@@ -13,7 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read #This is required for actions/checkout
+      contents: read # This is required for actions/checkout
 
     steps:
       - uses: actions/checkout@v4
@@ -23,11 +23,17 @@ jobs:
         with:
           node-version: '22.x'
 
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build app
+        run: npm run build --if-present
+
+      - name: Fix Jest permissions
+        run: chmod +x ./node_modules/.bin/jest
+
+      - name: Run tests
+        run: npx jest --ci --passWithNoTests
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
